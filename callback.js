@@ -11,3 +11,7 @@ function cb() {
 }
 
 somefunc(cb);
+
+somefunc(function() {
+  console.log("callback 함수 실행");
+});
