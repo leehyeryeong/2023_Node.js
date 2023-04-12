@@ -6,7 +6,7 @@ arr.forEach(function(data, index) {
 });
 
 // return 값이 true에 해당하는 idx 반환. 없으면 -1을 반환
-const cherryIndex = arr.findIndex((data) => {
+const cherryIndex = arr.findIndex(data => {
   return data === 'cherry';
 })
 console.log(cherryIndex);
