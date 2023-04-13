@@ -33,13 +33,42 @@ function getDuplication(baseDir) {
   if(!fs.existsSync(dulpicatedDir))
     fs.mkdirSync(dulpicatedDir);
 
+  //base 폴더에 있는 
   const arrayOfFiles = getAllFiles(baseDir, []);
 
   //중복된 파일들(절대 경로) list
   const duplicatedFiles = [];
+
+  //file: 파일의 절대 경로(string)
+  arrayOfFiles.forEach(function(file, idx) {
+    //절대 경로에서 파일 이름만 추출
+    const fileName = path.basename(file);
+
+    //같은 파일명을 가진 경로의 idx, 없으면 -1을 반환
+    const dulicatedIdx = arrayOfFiles.findIndex(function(otherFile, otherIdx) {
+      if(otherIdx > idx && otherFile.includes(fileName)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    //중복된 파일이 존재한다면
+    if(dulicatedIdx > -1) {
+      const dulpicatedFile = arrayOfFiles[dulicatedIdx];
+      console.log(file);
+      console.log(duplicatedFiles);
+
+      duplicatedFiles.push(file);
+      duplicatedFiles.push(dulpicatedFile);
+    }
+  });
+
+  return duplicatedFiles;
 }
 
 // const files = getAllFiles(__dirname + "\\base", []);
 // console.log(files.join('\n'));
 
-getDuplication(path.join(__dirname, 'base'));
+const files = getDuplicated(path.join(__dirname, 'base'));
+console.log(files.join('\n'));
