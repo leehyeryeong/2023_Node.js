@@ -56,11 +56,19 @@ function getDuplication(baseDir) {
     //중복된 파일이 존재한다면
     if(dulicatedIdx > -1) {
       const dulpicatedFile = arrayOfFiles[dulicatedIdx];
-      console.log(file);
-      console.log(duplicatedFiles);
 
       duplicatedFiles.push(file);
-      duplicatedFiles.push(dulpicatedFile);
+      duplicatedFiles.push(dulpicatedFile); //중복된 파일의 절대경로
+
+      //중복된 파일을 duplicatedDir에 복사
+      const destPath = path.join(dulpicatedDir, fileName);
+      fs.copyFile(file, destPath, (err) => {
+        if(err) {
+          console.error(err);
+          return;
+        }
+        console.log(`${fileName}이(가) 중복되었습니다. ${destPath}에 복사되었습니다.`);
+      })
     }
   });
 
