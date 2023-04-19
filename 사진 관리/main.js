@@ -69,6 +69,12 @@ function getDuplication(baseDir) {
         }
         console.log(`${fileName}이(가) 중복되었습니다. ${destPath}에 복사되었습니다.`);
       })
+
+      console.log(file);
+      console.log(duplicatedFiles);
+
+      duplicatedFiles.push(file);
+      duplicatedFiles.push(dulpicatedFile);
     }
   });
 
