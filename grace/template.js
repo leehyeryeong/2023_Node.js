@@ -7,10 +7,11 @@ const ejs = require('ejs');
 const index = {
   name: 'leehyeryeong',
   here: '한국',
-  food: '육회비빔밥',
-  food2: '초밥',
-  food3: '쿠키'
 };
+
+const food = '육회비빔밥';
+const food2 = '초밥';
+const food3 = '쿠키';
 
 const server = http.createServer(function(req, res) {
   console.log(req.url);
@@ -24,7 +25,7 @@ const server = http.createServer(function(req, res) {
   }
   else if(req.url === '/food') {
     ejs.renderFile(path.join(__dirname, 'template', 'food.ejs'), 
-    {food: index.food, food2: index.food2, food3: index.food3})
+    {food: food, food2: food2, food3: food3})
     .then((data) => res.end(data));
   }
   else {
