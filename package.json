@@ -5,7 +5,8 @@
   "main": "./grace/template.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./main.js"
+    "start": "nodemon ./main.js",
+    "m": "nodemon ./mysql/mysql.js"
   },
   "author": "leehyeryeong",
   "license": "ISC",
